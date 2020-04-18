@@ -214,7 +214,7 @@ socket.on('loserMsg', loser => {
 	let func1 = loser.id === local_id ? 'onclick="selectLoserCard(1)"' : '';
 	let func2 = loser.id === local_id ? 'onclick="selectLoserCard(2)"' : '';
 	let func3 = loser.id === local_id ? 'onclick="selectLoserCard(3)"' : '';
-	let func3 = loser.id === local_id ? 'onclick="selectLoserCard(4)"' : '';
+	let func4 = loser.id === local_id ? 'onclick="selectLoserCard(4)"' : '';
 
 	let pointer = loser.id === local_id ? ' pointer' : '';
 	playerAlert(`
