@@ -214,6 +214,7 @@ socket.on('loserMsg', loser => {
 	let func1 = loser.id === local_id ? 'onclick="selectLoserCard(1)"' : '';
 	let func2 = loser.id === local_id ? 'onclick="selectLoserCard(2)"' : '';
 	let func3 = loser.id === local_id ? 'onclick="selectLoserCard(3)"' : '';
+	let func3 = loser.id === local_id ? 'onclick="selectLoserCard(4)"' : '';
 
 	let pointer = loser.id === local_id ? ' pointer' : '';
 	playerAlert(`
@@ -231,6 +232,7 @@ socket.on('loserMsg', loser => {
 	<div class="card back${pointer}" data-card-loser="1" ${func1}"></div>
 	<div class="card back${pointer}" data-card-loser="2" ${func2}"></div>
 	<div class="card back${pointer}" data-card-loser="3" ${func3}"></div>
+	<div class="card back${pointer}" data-card-loser="3" ${func4}"></div>
 </div>
 	`);
 });
@@ -239,7 +241,7 @@ socket.on('showLoserCard', ({num, loser_card}) => {
 	const loserCards = document.querySelectorAll('.loserPick .card');
 	for (let card of loserCards) {
 		if (card.getAttribute('data-card-loser') == num.toString()) {
-			card.style.backgroundImage = `url('../img/forfeit/${loser_card.name}.jpg')`;
+			card.style.backgroundImage = `url('../img/forfeit/${loser_card.name.toLowerCase()}.jpg')`;
 			animate(card, 'flip', () => {
 				card.classList.remove('pointer');
 				card.style.margin = '0 auto';
