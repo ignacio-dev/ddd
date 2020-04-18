@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Drink Drank Drunk - Free quarantine edition!</title>
+
+	<!-- 3RD PARTY STYLESHEETS -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/animate.css">
+
+	<!-- OWN STYLESHEETS -->
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div id="ROOT" class="full-height">
+		<!-- LOADER -->
+		<div id="LOADER">
+			<h1 class="animated swing">Loading...</h1>
+		</div>
+
+		<!-- ANIMLOG -->
+		<input type="text" name="animlog" id="ANIMLOG" data-animlog='true' data-running='false'>
+
+		<!-- APP -->
+		<div id="APP" class="full-height">
+			<!-- SIDEBAR -->
+			<div id="SIDEBAR">
+				<h2>PLAYERS</h2>
+				<div class="hidden instructions shadow border-radius">
+					<p>
+						Weakness, Power  & Special cards will be displayed after those who own them.
+					</p>
+				</div>
+				<ol id="PLAYERS_LIST">
+				</ol>
+			</div>
+
+			
+			<!-- DEKS -->
+			<div id="DESK">
+				<!-- top -->
+				<div class="top">
+					<!-- STACK -->
+					<div id="STACK">
+						<div class="card back"></div>
+						<div class="card back"></div>
+						<div class="card back"></div>
+						<div class="card back"></div>
+						<div class="card back"></div>
+						<div class="card back"></div>
+					</div>
+					<div id="drawInstr" class="hidden instructions border-radius shadow">
+						<p>Press here to draw a card when it's your turn</p>
+					</div>
+
+					
+					<!-- RULE CARDS -->
+					<div id="RULE_CARDS">
+						<div class="rule_holder">
+							<span>Rule</span>
+						</div>
+						<div class="rule_holder">
+							<span>Rule</span>
+						</div>
+						<div class="hidden instructions border-radius shadow">
+							<p>Everyone must follow the rules at all times</p>
+						</div>	
+					</div>
+					
+				</div>
+
+
+				<!-- bottom -->
+				<div class="bottom">
+					<!-- DISCARDED CARDS -->
+					<div id="DISCARDED_CARDS"></div>
+					<div class="hidden instructions border-radius shadow">
+						<p>
+							Action cards will be shown here, read and do what they say!
+						</p>
+					</div>
+				</div>		
+			</div>
+
+
+			<!--  TOOLS -->
+			<div id="TOOLS">
+				<!-- STOPWATCH -->
+				<div class="tool">
+					<div id="STOPWATCH" data-stopwatch-permits="false" class="tool">
+						<img src="img/stopwatch.png">
+						<span></span>
+						<div class="hidden instructions border-radius shadow">
+							<p>When the timer hits 0 the game will be over.</p>
+						</div>
+					</div>
+				</div>
+
+
+				
+
+				<!-- HELP -->
+				<div class="tool">
+					<div id="HELP"></div>					
+				</div>
+
+				<!-- INSTRUCTIONS -->
+				<!-- <div class="tool" id="INSTR_BOOK">
+					<div class="icon"></div>
+					<div class="hidden instructions border-radius shadow">
+						<p>Show/Hide the game instructions.</p>
+					</div>				
+				</div> -->
+
+				<!-- SOUND -->
+				<div id="SOUND_TOGGLER" data-sound="on" class="tool">
+					<div class="icon"></div>
+					<div class="hidden instructions border-radius shadow">
+						<p>Toggle sound effects on & off</p>
+					</div>
+				</div>	
+
+
+			</div>
+
+
+			<!-- ROOM CODE -->
+			<div id="ROOMCODE">
+				<div class="hidden instructions border-radius shadow">
+					<p>Invite friends to join this room with this room code</p>
+				</div>
+				<p>Room code: <span id="ROOMCODE_FIELD"></span></p>
+			</div>
+
+
+			<!-- I DRANK -->
+			<div id="IDRANK">
+				<div class="hidden instructions border-radius shadow">
+					Press this button each time you drink to add to your drink score
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+	<!-- SOUND PRE CACHER -->
+	<div ID="SOUND_PRECACHER">	
+		<audio controls preload="auto">
+			<source type="audio/mpeg" src="sounds/card_draw.mp3">
+			<source type="audio/mpeg" src="sounds/card_wiggle.mp3">
+			<source type="audio/mpeg" src="sounds/power.mp3">
+			<source type="audio/mpeg" src="sounds/weakness.mp3">
+		</audio>
+	</div>
+
+
+	<!-- SCRIPTS -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.3/howler.min.js"></script> -->
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.3/qs.min.js"></script>
+	<script src="js/script.js"></script>
+</body>
+</html>

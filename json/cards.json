@@ -1,0 +1,561 @@
+[
+	{
+		"name": "Call A Mate",
+		"type": "Action",
+		"text": "Drink with whoever youve known the longest."
+	},
+	{
+		"name": "Categories",
+		"type": "Action",
+		"text": "Choose a catagory. Everyone must tame something from that catagory. If someone repeats or fails to name something, they drink."
+	},
+	{
+		"name": "Old Fart",
+		"type": "Action",
+		"text": "Oldest person drinks and talks about how it was \"back in my day\"."
+	},
+	{
+		"name": "Fuzzy Face",
+		"type": "Action",
+		"text": "All players with fuzz on thier face drink!"
+	},
+	{
+		"name": "The Sign Said",
+		"type": "Action",
+		"text": "All long haired people drink!"
+	},
+	{
+		"name": "Dutch Courage!",
+		"type": "Action",
+		"text": "Do a drank. LEKKER!"
+	},
+	{
+		"name": "Poking the Kebab",
+		"type": "Action",
+		"text": "Go around the group making euphemisms for sex. Whoever fails must drink seductively."
+	},
+	{
+		"name": "Story Time",
+		"type": "Action",
+		"text": "Tell an interesting story. The group decides if they all toast to your tale or you have to drink in shame."
+	},
+	{
+		"name": "Hey Sexy",
+		"type": "Action",
+		"text": "Give 1 drink to someone you find attractive."
+	},
+	{
+		"name": "Tribal Council",
+		"type": "Action",
+		"text": "Everyone debates & votes on who should drink."
+	},
+	{
+		"name": "Serious Round",
+		"type": "Action",
+		"text": "No one may laugh for one round. Whoever does, drinks."
+	},
+	{
+		"name": "Busta Rhyme",
+		"type": "Action",
+		"text": "Say a sentence. The next person must rhyme their sentence with yours, and so on. Whoever screws up, drinks."
+	},
+	{
+		"name": "Busta Move",
+		"type": "Action",
+		"text": "Do a little dance. The next person copies your dance and adds their own move, and so on. Whoever screws up, drinks."
+	},
+	{
+		"name": "Twerk",
+		"type": "Action",
+		"text": "Show everyone how to twerk. Refuse and drink."
+	},
+	{
+		"name": "Too Young",
+		"type": "Action",
+		"text": "Everyone younger than you drinks and giggles immaturely. If youre the youngest. drink twice and talk about how \"Its so unfair\""
+	},
+	{
+		"name": "Joker",
+		"type": "Action",
+		"text": "Tell a joke. If no-one laughs, you drink."
+	},
+	{
+		"name": "Toast",
+		"type": "Action",
+		"text": "Make a toast, (not the bad kind), Everyone drinks!"
+	},
+	{
+		"name": "Word",
+		"type": "Action",
+		"text": "The group picks a word or two for you to post on social media. Drink for every like it gets."
+	},
+	{
+		"name": "Waterfall",
+		"type": "Action",
+		"text": "Everyone starts drinking. You may stop whenever but everyone else must keep going until the player on their right has stopped."
+	},
+	{
+		"name": "At the Movies",
+		"type": "Action",
+		"text": "Name a film. The next player names an actor from that film. The following player names a film with that actor, etc. Whoever fails to name anything, drinks."
+	},
+	{
+		"name": "Stubby Toe",
+		"type": "Action",
+		"text": "Make the face you make when you stub your toe. Do so until someone says \"Okay, you can stop it now\"."
+	},
+	{
+		"name": "Wing Me",
+		"type": "Action",
+		"text": "Have a friend drink with you for 1 round."
+	},
+	{
+		"name": "Stare Down",
+		"type": "Action",
+		"text": "Challenge someone to a staring context. Loser drinks 2."
+	},
+	{
+		"name": "Get Down!",
+		"type": "Action",
+		"text": "Everyone! Dance for 10 seconds. If youre a party pooper and dont want to, then drink for 10 seconds instead!"
+	},
+	{
+		"name": "Drin-king",
+		"type": "Action",
+		"text": "Distribute 10 seconds of drinking."
+	},
+	{
+		"name": "Cavepeople",
+		"type": "Action",
+		"text": "Everyone speak using only one syllable words for 1 round."
+	},
+	{
+		"name": "Lello Lolly",
+		"type": "Action",
+		"text": "Say \"Red Lorry, Yellow Lorry\" 5 times quickly. Screw up and drink!"
+	},
+	{
+		"name": "Same Same",
+		"type": "Action",
+		"text": "Yell out 2 things. The first person to point out what they have in common distributes 2 drinks!"
+	},
+	{
+		"name": "Singles Bar",
+		"type": "Action",
+		"text": "Each person takes turns dropping their best pickup line. Everyone else drinks if the line is good. If no-one drinks to your pickup, you drink in shame."
+	},
+	{
+		"name": "Multiliquor",
+		"type": "Action",
+		"text": "Take turns saying Cheers in different languages. Fail, or repeat and drink."
+	},
+	{
+		"name": "Dont swallow",
+		"type": "Action",
+		"text": "Hold a mouthful of drink for 1 round."
+	},
+	{
+		"name": "Drunk Lecture",
+		"type": "Action",
+		"text": "Talk for 60 seconds about a topic of the groups choice. Succeed and everyone drinks, fail and you drink."
+	},
+	{
+		"name": "AnimaL",
+		"type": "Action",
+		"text": "Take turns naming animals, each starting with the last letter of the previous animal. Drink if ewe shrew up."
+	},
+	{
+		"name": "Shopping List",
+		"type": "Action",
+		"text": "Take turns naming foods, starting with the last letter of the previous food. Drink if you choke."
+	},
+	{
+		"name": "Never Have I Ever",
+		"type": "Action",
+		"text": "Go around the group each completing the sentence \"Never Have I Ever\". Anyone who has done what is said, drinks."
+	},
+	{
+		"name": "SHHH!",
+		"type": "Action",
+		"text": "(Dont read this out loud!) \n Make up what this card says. If someone doesnt believe you, drink."
+	},
+	{
+		"name": "Ma7hmagicians",
+		"type": "Action",
+		"text": "Clockwise, the group counts up from 1. Multiples & mentions of 7 are replaced by the sound of your choice. If anyone screws up, they drink!"
+	},
+	{
+		"name": "One Hit Wonder",
+		"type": "Action",
+		"text": "Make up a jingle about a product of the groups choice. Drink once if its a hit, thrice if its a miss! group decides."
+	},
+	{
+		"name": "Choir",
+		"type": "Action",
+		"text": "Say a word in a very low bass tone. Going around the group, players repeat the word in increasingly higher pitches. First to crack, drinks!"
+	},
+	{
+		"name": "Tied Up",
+		"type": "Action",
+		"text": "Keep your hands behind your back for 1 round."
+	},
+	{
+		"name": "Dance Fever",
+		"type": "Action",
+		"text": "For 1 round, there must always be at least one person dancing. If not, everyone drinks."
+	},
+	{
+		"name": "Colour Find",
+		"type": "Action",
+		"text": "Choose a colour. The last player to hold up something of that colour drinks!"
+	},
+	{
+		"name": "Feet Up",
+		"type": "Action",
+		"text": "Show your feet! Last person to do so, drinks!"
+	},
+	{
+		"name": "Draw Me A Bath",
+		"type": "Action",
+		"text": "Everyone has 60 seconds to draw something of your choice. The best 2 artists get to give two drinks each. Everyone else drinks!"
+	},
+	{
+		"name": "Private Eye",
+		"type": "Action",
+		"text": "Send a private message of an obscure word to another player. That player must say the word 4 times throughout this round without anyone noticing. If the spy does so, everyone drinks, if the spy fails or gets discovered, they drank!"
+	},
+	{
+		"name": "Pub Quiz",
+		"type": "Action",
+		"text": "Ask a few quiz questions to the group. First to answer each question wins! Others, drink! Players may use the internet to find their answers."
+	},
+	{
+		"name": "Shitty Photoshop",
+		"type": "Action",
+		"text": "Show any photo to the group. Everyone has 60 seconds to recreate the image with their camera using whatever they have on hand. You decide the winner, the rest drink!"
+	},
+	{
+		"name": "Hummy",
+		"type": "Action",
+		"text": "Humm a song. First person to name the tine gets to distribute 5 drinks"
+	},
+	{
+		"name": "DJ Sofa",
+		"type": "Action",
+		"text": "Play a song, first person to name the artist of the song wins. Losers drink."
+	},
+	{
+		"name": "Check This Out",
+		"type": "Action",
+		"text": "Go around the group, each person must show a funny picture, meme or short video to everyone. If it gets no laughs, drink. If anyone laughs when seeing it, they drink!"
+	},
+	{
+		"name": "Quarantine Blues",
+		"type": "Action",
+		"text": "Tell everyone what you miss most about life outside of quarantine. All cheers and drink to that."
+	},
+	{
+		"name": "Utoob Channel",
+		"type": "Action",
+		"text": "Talk for 60 seconds in the style of a YouTuber. The channels name/videos title is determined by the group."
+	},
+
+
+
+	{
+		"name": "Disarm",
+		"type": "Special",
+		"text": "Discard another players power card."
+	},
+	{
+		"name": "1Up",
+		"type": "Special",
+		"text": "Stead another players power."
+	},
+	{
+		"name": "Deflection",
+		"type": "Special",
+		"text": "This card lets you deflect any action onto another player!"
+	},
+	{
+		"name": "Sacrificial Altar",
+		"type": "Special",
+		"text": "Get rid of any rule, power or weakness in play. The cost however, is one drank!"
+	},
+	{
+		"name": "Friend in Need",
+		"type": "Special",
+		"text": "Rid a friend of a weakness by drinking 3 times."
+	},
+	{
+		"name": "Paracetamol",
+		"type": "Special",
+		"text": "Drink a drank to relieve yourself of any weakness."
+	},
+	{
+		"name": "Medicine",
+		"type": "Special",
+		"text": "Woo Hoo! Get rid of one weakness card!"
+	},{
+		"name": "Great Deal!",
+		"type": "Special",
+		"text": "Swap one of your weakness cards for another players power card."
+	},
+	{
+		"name": "Nope",
+		"type": "Special",
+		"text": "Use this card to stop any play."
+	},
+	{
+		"name": "Counter",
+		"type": "Special",
+		"text": "Use this card to counter anything anyone throws at you."
+	},
+	
+	{
+		"name": "Karma Police",
+		"type": "Special",
+		"text": "Whoever makes you drink has to drink with you!"
+	},{
+		"name": "Down it!",
+		"type": "Special",
+		"text": "Use this card to force any player to down their drink!"
+	},
+	{
+		"name": "Expelliarmus",
+		"type": "Special",
+		"text": "Throw away any weakness, power or rule card in play!"
+	},
+	
+	{
+		"name": "Anarchy",
+		"type": "Special",
+		"text": "Get rid of all rule, power & weakness cards in play."
+	},
+
+
+
+
+
+	{
+		"name": "The Grown-Up",
+		"type": "Power",
+		"text": "All other players must talk to you like they are little children. If they dont, tell them off and make them drink."
+	},
+	{
+		"name": "Egomaniac",
+		"type": "Power",
+		"text": "Everyone, including yourself, must compliment you before drinking. No repeat compliments!"
+	},
+	{
+		"name": "Question Master",
+		"type": "Power",
+		"text": "Anyone who answers your questions must drink!"
+	},
+	{
+		"name": "Topic Master",
+		"type": "Power",
+		"text": "Choose an obscure topic. Whenever anyone talks about it, they drink."
+	},
+	{
+		"name": "Home Alone",
+		"type": "Power",
+		"text": "Everyone must copy you anytime you place your hands on your face as pictured. Last one to do so drinks!"
+	},
+	{
+		"name": "Slim Shady",
+		"type": "Power",
+		"text": "Whever you stand up, everyone stands up too. Last one to stand up drinks."
+	},
+	{
+		"name": "Sniper!",
+		"type": "Power",
+		"text": "Whenever you yell \"SNIPER!\" Everyone must take cover. Last to do so, drinks."
+	},
+	{
+		"name": "Thumb King",
+		"type": "Power",
+		"text": "Anytime you place a thumb on your head, others must do the same. Last to do so, drinks."
+	},
+	{
+		"name": "Conductor",
+		"type": "Power",
+		"text": "Whenever you stand and wave your hands like an orchestra conductor, everyone must pretend to play an instrument. Last to do so, drinks."
+	},
+	{
+		"name": "Trump Card",
+		"type": "Power",
+		"text": "Rules no londer apply to you. Anyone who disagrees is fake news and should drink."
+	},
+
+
+
+
+
+
+	{
+		"name": "Me Myself & I",
+		"type": "Weakness",
+		"text": "You may only refer to yourself in the 3rd person."
+	},
+	{
+		"name": "Echo",
+		"type": "Weakness",
+		"text": "Repeat the last word of every sentence you say. If you dont, then drink drink."
+	},
+	{
+		"name": "Swear Jar",
+		"type": "Weakness",
+		"text": "Pay for your profanity. Drink each time you swear. Card passes to whomever says the word swear"
+	},
+	{
+		"name": "Drunk Dresser",
+		"type": "Weakness",
+		"text": "Wear an item of clothing backwards"
+	},
+	{
+		"name": "In Bed",
+		"type": "Weakness",
+		"text": "Every sentence must end with \"In Bed\"."
+	},
+	{
+		"name": "Teachers Pet",
+		"type": "Weakness",
+		"text": "Raise your hand for permission each time you want to ask a question."
+	},
+	{
+		"name": "In My Pants",
+		"type": "Weakness",
+		"text": "Every sentence you say must end with \"In My Pants\"."
+	},
+		{
+		"name": "Lawyer Up!",
+		"type": "Weakness",
+		"text": "You may only speak through the player of your choice. Use private messages to let them know what you want them to say."
+	},
+	{
+		"name": "Sir Fistalot",
+		"type": "Weakness",
+		"text": "Hands are for peasants! Use only your fists!"
+	},
+	{
+		"name": "Fitness",
+		"type": "Weakness",
+		"text": "Get fit! Do a fitness act each time you drink, like a push up or something."
+	},
+	{
+		"name": "Wasted Mime",
+		"type": "Weakness",
+		"text": "You can no longer speak. Youre going to have to mime everything you want to say."
+	},
+	{
+		"name": "MeTuber",
+		"type": "Weakness",
+		"text": "Every time you talk you must start with \"Hey (your name) here\" and end with \"Dont forget to smash that like button\" or some other sign off."
+	},
+
+
+
+
+
+	{
+		"name": "Pussycat",
+		"type": "Rule",
+		"text": "No one may say \"now\". It must be \"Meow\" instead!"
+	},
+	{
+		"name": "New Names",
+		"type": "Rule",
+		"text": "Give everyone new names. Whoever forgets to use these names, drinks!"
+	},
+	{
+		"name": "Royal-Tea",
+		"type": "Rule",
+		"text": "Everyone must drink with their pinky finger extended. Classy!"
+	},{
+		"name": "Fancy Bar",
+		"type": "Rule",
+		"text": "No swearing. This is a sophisticated game!"
+	},
+	{
+		"name": "MEMEMEEE!",
+		"type": "Rule",
+		"text": "Everyone sings out their name before drinking!"
+	},
+	{
+		"name": "Dont Say That!",
+		"type": "Rule",
+		"text": "Choose a word. Whenver its spoken, the speaker must drink!"
+	},
+	{
+		"name": "Dink Dank Dunk",
+		"type": "Rule",
+		"text": "No saying the words Drink, Drank or Drunk."
+	},
+	{
+		"name": "Monkey",
+		"type": "Rule",
+		"text": "Peel your drinks like bananas and make monkey sounds before drinking."
+	},
+	{
+		"name": "Hats",
+		"type": "Rule",
+		"text": "Everybody must keep a hat or hat-like thing on their head at all times. Whenever it falls off, they drink."
+	},
+	{
+		"name": "Sippy Cup",
+		"type": "Rule",
+		"text": "Everyone must drink with two hands like babies."
+	},
+	{
+		"name": "Buffalo",
+		"type": "Rule",
+		"text": "If someone uses their dominant hand to drink, other players may shout Buffalo to make them down their drink.",
+		"subtext": "(Use a pen to make everyones dominant hand"
+	},
+	{
+		"name": "Got The Power!",
+		"type": "Rule",
+		"text": "Come up with a rule for this card. Use this power wisely! Take your time to decide and put it into play whenever you want."
+	},
+	{
+		"name": "Funny Hands",
+		"type": "Rule",
+		"text": "Whenver someone laughs, they must wave their hands above their head."
+	},
+	{
+		"name": "Sad LOL",
+		"type": "Rule",
+		"text": "Everyone must frown while laughing"
+	},
+	{
+		"name": "Moaner",
+		"type": "Rule",
+		"text": "Everybody must moan the name of the person they are addressing."
+	},
+	{
+		"name": "Drinking League",
+		"type": "Rule",
+		"text": "Everyone gets superhero names. Whoever forgets to use these names, drinks!"
+	},
+	{
+		"name": "Jurassic Park",
+		"type": "Rule",
+		"text": "Everyone drinks with elbows locked to their sides like a T-Rex."
+	},
+	{
+		"name": "Face Off",
+		"type": "Rule",
+		"text": "No touching any faces."
+	},
+	{
+		"name": "Animal Farm",
+		"type": "Rule",
+		"text": "Assign an animal to each player. Everyone must make their animals noise everytime they drink."
+	},
+	{
+		"name": "Spittin Bars",
+		"type": "Rule",
+		"text": "Each person must spit two bars before drawing a card."
+	}
+]

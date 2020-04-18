@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Drink Drank Drunk - Free quarantine edition!</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div id="LOGO"></div>
+	<div id="ROOT" class="full-height">
+		
+			<div class="full-height content-centered">
+				<div class="bg-white border-radius padding mw border shadow" id="FORM_HOLDER">
+
+					<div id="ENTRANCE">
+						<div class="group">
+							<h1>Welcome to Drink Drank Drunk’s free quarantine edition!</h1>
+						</div>
+						<div class="group">
+							<p>
+								Make sure to have your drink and video chat program running and friends standing by. (We recommend zoom or google hangouts)
+							</p>
+						</div>
+						<a href="#" class="button bg-blue shadow" id="BTN_JOIN">Join room</a>
+						<a href="#" class="button bg-blue shadow" id="BTN_CREATE">Create room</a>
+					</div>
+
+					<div id="ENTRANCE_FORM" class="hidden">
+						<div class="group">
+							<h1 id="FORM_HEADER"></h1>
+						</div>
+						<form action="app.html">
+							<div class="group">
+								<label for="nickname">Nickname: </label>
+								<input type="text" maxlength="12" autocomplete="off" name="nickname" placeholder="Choose your nickname">
+							</div>
+							<div class="group">
+								<label for="avatar">Avatar: </label>
+								<div id="PICK_AVATAR">
+									<div data-avatar-num="1" class="avatar av1 active"></div>
+									<div data-avatar-num="2" class="avatar av2"></div>
+									<div data-avatar-num="3" class="avatar av3"></div>
+								</div>
+							</div>
+							<div class="group" id="ROOM_CODE_FIELD">
+								<label for="room">Room Code: </label>
+								<input type="text" maxlength="6" autocomplete="off" name="room" placeholder="Paste the room code">
+							</div>
+							<div class="hidden">
+								<input type="text" name="avatar" id="AVATAR_VAL_HOLDER" value="1">
+							</div>
+							<button type="submit" class="button bg-blue shadow">Start!</button>
+							<a href="#" class="button bg-blue shadow" id="BACK_TO_ENTRANCE"><i class="fas fa-long-arrow-alt-left"></i> Go Back</a>
+						</form>
+					</div>
+				</div>
+			</div>
+		
+	</div>
+	<script src="js/entrance.js"></script>
+</body>
+</html>
