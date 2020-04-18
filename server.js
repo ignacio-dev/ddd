@@ -64,47 +64,56 @@ IO.on('connection', socket => {
 		}
 
 		const player = playerJoin(socket.id, nickname, room, avatar);
-		socket.join(player.room);
+		if (player) {
 
-		socket.emit('playerId', {
-			playerId: player.id
-		});
+			socket.join(player.room);
 
-		IO.to(player.room).emit('roomData', {
-			room: player.room,
-			players: getRoomPlayers(player.room),
-			cards: getRoomCards(player.room)[0].cards_data
-		});
+			socket.emit('playerId', {
+				playerId: player.id
+			});
 
-		if (init === true) {
-			socket.emit('turn');
-			socket.emit('animationOverResp');
-			socket.emit('stopWatchPermits');
-			socket.emit('init');
+			IO.to(player.room).emit('roomData', {
+				room: player.room,
+				players: getRoomPlayers(player.room),
+				cards: getRoomCards(player.room)[0].cards_data
+			});
+
+			if (init === true) {
+				socket.emit('turn');
+				socket.emit('animationOverResp');
+				socket.emit('stopWatchPermits');
+				socket.emit('init');
+			}
+
 		}
 	});
 
 	// IMG PRE CACHE
 	socket.on('imgPreCacheReq', () => {
 		const precache_data = getPreCacheData();
-		socket.emit('preCacheImgs', precache_data);
+		if (precache_data) {
+			socket.emit('preCacheImgs', precache_data);
+		}	
 	});
 
 
 	// DRAW CARD
 	socket.on('drawCard', room => {
 		const card = drawCard(room);
-		socket.emit('cardDrawn', card);
+		if (card) {
+			socket.emit('cardDrawn', card);
 
-		IO.to(room).emit('roomData', {
-			room: room,
-			players: getRoomPlayers(room),
-			cards: getRoomCards(room)[0].cards_data
-		});	
+			IO.to(room).emit('roomData', {
+				room: room,
+				players: getRoomPlayers(room),
+				cards: getRoomCards(room)[0].cards_data
+			});	
 
-		if (getRoomCards(room)[0].cards_data.length === 0) {
-			IO.to(room).emit('endGame');
+			if (getRoomCards(room)[0].cards_data.length === 0) {
+				IO.to(room).emit('endGame');
+			}
 		}
+		
 	});
 
 	// ACTION CARD
@@ -144,13 +153,16 @@ IO.on('connection', socket => {
 	// NEXT PLAYER
 	socket.on('reqNextPlayer', room => {
 		const currentPlayer = getCurrentPlayer(socket.id);
-		const nextPlayerId = nextPlayer(socket.id);
-		IO.to(room).emit('roomData', {
-			room: room,
-			players: getRoomPlayers(room),
-			cards: getRoomCards(room)[0].cards_data
-		});
-		IO.to(nextPlayerId).emit('turn');
+		if (currentPlayer) {
+			const nextPlayerId = nextPlayer(socket.id);
+			IO.to(room).emit('roomData', {
+				room: room,
+				players: getRoomPlayers(room),
+				cards: getRoomCards(room)[0].cards_data
+			});
+			IO.to(nextPlayerId).emit('turn');
+		}
+		
 	});
 
 	// START WATCH
@@ -161,98 +173,65 @@ IO.on('connection', socket => {
 	// TIMEOUT
 	socket.on('timeOut', room => {
 		IO.to(room).emit('everyoneDrinks');
-		const moderator = getRoomModerator(room);
-		IO.to(moderator.id).emit('stopWatchPermits');
+		// const moderator = getRoomModerator(room);
+		// IO.to(moderator.id).emit('stopWatchPermits');
 	});
 
 	// I DRANK
 	socket.on('iDrank', () => {
 		const player = getCurrentPlayer(socket.id);
-		if (player.drinks < 99) player.drinks += 1;
-		IO.to(player.room).emit('playerDrank', {
-			player: player.nickname,
-			drinks: player.drinks
-		});
+		if (player) {
+			if (player.drinks < 99) player.drinks += 1;
+			IO.to(player.room).emit('playerDrank', {
+				player: player.nickname,
+				drinks: player.drinks
+			});
 
-		IO.to(player.room).emit('roomData', {
-			room: player.room,
-			players: getRoomPlayers(player.room),
-			cards: getRoomCards(player.room)[0].cards_data
-		});
+			IO.to(player.room).emit('roomData', {
+				room: player.room,
+				players: getRoomPlayers(player.room),
+				cards: getRoomCards(player.room)[0].cards_data
+			});
+		}
+		
 	});
 
 	// USE CARD
 	socket.on('useCardReq', ({card, player, room}) => {
 		let _player  = getCurrentPlayer(player);
-		let response = useCardMessage(_player, card);
-		socket.emit('useCardResp', response);
+		if (_player) {
+			let response = useCardMessage(_player, card);
+			socket.emit('useCardResp', response);
+		}
+		
 	});
 
 	socket.on('steal', ({ targetPlayer, cardName, cardType, specialCard }) =>  {
 		let playerOrig = getCurrentPlayer(socket.id);
-		let playerTarg = getCurrentPlayer(targetPlayer);
-		let room = playerOrig.room;
-		stealCard(playerOrig, playerTarg, cardName, cardType, specialCard);
-		let card = {
-			name: cardName,
-			type: cardType == 'power' ? 'Power' : 'Weakness',
-			stolen: true
-		};
-
-		IO.to(room).emit('roomData', {
-			room,
-			players: getRoomPlayers(room),
-			cards: getRoomCards(room)[0].cards_data,
-			card
-		});
-		IO.to(room).emit('specialCardUsed', { playerOrig, playerTarg, specialCard });
-		//IO.to(room).emit('cardStolen');
-	});
-
-	socket.on('remove', ({ targetPlayer, cardName, cardType, specialCard }) => {
-		let playerOrig = getCurrentPlayer(socket.id);
-		let playerTarg = getCurrentPlayer(targetPlayer);
-		let room = playerOrig.room;
-		removeCard(playerOrig, playerTarg, cardName, cardType, specialCard);
-
-		IO.to(room).emit('roomData', {
-			room,
-			players: getRoomPlayers(room),
-			cards: getRoomCards(room)[0].cards_data
-		});
-		IO.to(room).emit('specialCardUsed', { playerOrig, playerTarg, specialCard });
-		//IO.to(room).emit('disarmed');
-	});
-
-	socket.on('anarchy', cardName => {
-		let playerOrig = getCurrentPlayer(socket.id);
-		let room = playerOrig.room;
-		let specialCard = cardName;
-		resetRoomStateCards(room, cardName, playerOrig);
-		IO.to(room).emit('roomData', {
-			room,
-			players: getRoomPlayers(room),
-			cards: getRoomCards(room)[0].cards_data,
-			remove_rules: true
-		});
-		IO.to(room).emit('specialCardUsed', { playerOrig, specialCard });
-	});
-
-	socket.on('expelliarmus', ({ targetPlayer, cardName, cardType, specialCard }) => {
-		if (!targetPlayer) {
-			let playerOrig = getCurrentPlayer(socket.id);
+		if (playerOrig){
+			let playerTarg = getCurrentPlayer(targetPlayer);
 			let room = playerOrig.room;
-			removeRule(playerOrig, specialCard);
+			stealCard(playerOrig, playerTarg, cardName, cardType, specialCard);
+			let card = {
+				name: cardName,
+				type: cardType == 'power' ? 'Power' : 'Weakness',
+				stolen: true
+			};
+
 			IO.to(room).emit('roomData', {
 				room,
 				players: getRoomPlayers(room),
 				cards: getRoomCards(room)[0].cards_data,
-				ruleRemove: cardName
+				card
 			});
-			IO.to(room).emit('specialCardUsed', { playerOrig, specialCard });
+			IO.to(room).emit('specialCardUsed', { playerOrig, playerTarg, specialCard });
+			//IO.to(room).emit('cardStolen');
 		}
-		else {
-			let playerOrig = getCurrentPlayer(socket.id);
+	});
+
+	socket.on('remove', ({ targetPlayer, cardName, cardType, specialCard }) => {
+		let playerOrig = getCurrentPlayer(socket.id);
+		if (playerOrig) {
 			let playerTarg = getCurrentPlayer(targetPlayer);
 			let room = playerOrig.room;
 			removeCard(playerOrig, playerTarg, cardName, cardType, specialCard);
@@ -263,57 +242,122 @@ IO.on('connection', socket => {
 				cards: getRoomCards(room)[0].cards_data
 			});
 			IO.to(room).emit('specialCardUsed', { playerOrig, playerTarg, specialCard });
+			//IO.to(room).emit('disarmed');
+		}
+		
+	});
+
+	socket.on('anarchy', cardName => {
+		let playerOrig = getCurrentPlayer(socket.id);
+		if (playerOrig) {
+			let room = playerOrig.room;
+			let specialCard = cardName;
+			resetRoomStateCards(room, cardName, playerOrig);
+			IO.to(room).emit('roomData', {
+				room,
+				players: getRoomPlayers(room),
+				cards: getRoomCards(room)[0].cards_data,
+				remove_rules: true
+			});
+			IO.to(room).emit('specialCardUsed', { playerOrig, specialCard });
+		}
+	});
+
+	socket.on('expelliarmus', ({ targetPlayer, cardName, cardType, specialCard }) => {
+		if (!targetPlayer) {
+			let playerOrig = getCurrentPlayer(socket.id);
+			if (playerOrig) {
+				let room = playerOrig.room;
+				removeRule(playerOrig, specialCard);
+				IO.to(room).emit('roomData', {
+					room,
+					players: getRoomPlayers(room),
+					cards: getRoomCards(room)[0].cards_data,
+					ruleRemove: cardName
+				});
+				IO.to(room).emit('specialCardUsed', { playerOrig, specialCard });
+			}	
+		}
+		else {
+			let playerOrig = getCurrentPlayer(socket.id);
+			if (playerOrig) {
+				let playerTarg = getCurrentPlayer(targetPlayer);
+				let room = playerOrig.room;
+				removeCard(playerOrig, playerTarg, cardName, cardType, specialCard);
+
+				IO.to(room).emit('roomData', {
+					room,
+					players: getRoomPlayers(room),
+					cards: getRoomCards(room)[0].cards_data
+				});
+				IO.to(room).emit('specialCardUsed', { playerOrig, playerTarg, specialCard });
+
+			}
+			
 		}
 		//console.log(targetPlayer, cardName, cardType, specialCard);
 	});
 
 	socket.on('showSpecialReq', card => {
 		let playerOrig = getCurrentPlayer(socket.id);
-		let room = playerOrig.room;
-		removeRule(playerOrig, card);
-		IO.to(room).emit('roomData', {
-			room,
-			players: getRoomPlayers(room),
-			cards: getRoomCards(room)[0].cards_data
-		});
-		let specialCard = card;
-		IO.to(room).emit('specialCardUsed', { playerOrig, specialCard });
+		if (playerOrig) {
+			let room = playerOrig.room;
+			removeRule(playerOrig, card);
+			IO.to(room).emit('roomData', {
+				room,
+				players: getRoomPlayers(room),
+				cards: getRoomCards(room)[0].cards_data
+			});
+			let specialCard = card;
+			IO.to(room).emit('specialCardUsed', { playerOrig, specialCard });
+		}
+		
 
 	});
 
 	socket.on('swap', ({ targetPlayer, cardName, cardType, specialCard, myCardName, myCardType }) => {
 		let playerOrig = getCurrentPlayer(socket.id);
-		let playerTarg = getCurrentPlayer(targetPlayer);
-		let room = playerOrig.room;
-		swapCard(playerOrig, playerTarg, cardName, cardType, specialCard, myCardName, myCardType);
+		if (playerOrig) {
+			let playerTarg = getCurrentPlayer(targetPlayer);
+			let room = playerOrig.room;
+			swapCard(playerOrig, playerTarg, cardName, cardType, specialCard, myCardName, myCardType);
 
-		IO.to(room).emit('roomData', {
-			room,
-			players: getRoomPlayers(room),
-			cards: getRoomCards(room)[0].cards_data
-		});
+			IO.to(room).emit('roomData', {
+				room,
+				players: getRoomPlayers(room),
+				cards: getRoomCards(room)[0].cards_data
+			});
 
-		IO.to(room).emit('specialCardUsed', { playerOrig, playerTarg, specialCard });
+			IO.to(room).emit('specialCardUsed', { playerOrig, playerTarg, specialCard });	
+		}
+		
 	});
 
 	// GAME OVER
 	socket.on('endGameReq', (room) => {
 		const loser = getRoomLoser(room);
-		IO.to(room).emit('loser');
-		// socket.emit('endGame');
+		if (loser) {
+			IO.to(room).emit('loser');
+			// socket.emit('endGame');
+		}
+		
 	});
 
 	socket.on('loserMsgReq', room => {
 		const loser = getRoomLoser(room);
-		IO.to(room).emit('loserMsg', loser);
+		if (loser) {
+			IO.to(room).emit('loserMsg', loser);
+		}
+		
 	});
 
 	socket.on('loserCardSelected', num => {
 		const player = getCurrentPlayer(socket.id);
-		let loserCard = pickLoserCard();
 		if (player) {
-			IO.to(player.room).emit('showLoserCard', { num, loser_card: loserCard });
-		}	
+			let loserCard = pickLoserCard();
+			IO.to(player.room).emit('showLoserCard', { num, loser_card: loserCard });	
+		}
+		
 	});
 
 	// DISCONNECT

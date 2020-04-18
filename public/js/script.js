@@ -20,7 +20,7 @@ socket.on('init', () => firstMove = true);
 // DOM ELEMENTS
 const APP = document.getElementById('APP');
 
-const SOUND_TOGGLER = document.getElementById('SOUND_TOGGLER');
+const SOUND_TOGGLER = document.querySelector('#SOUND_TOGGLER .icon');
 	  SOUND_TOGGLER.onclick = toggleSound;
 
 const HELP = document.getElementById('HELP');
@@ -368,7 +368,7 @@ function fileNameParse(str) {
 // ANIMATE
 function animate(elem, animationName, callback, speed='fast') {
 	SETTINGS.animating = true;
-	speed = 'faster';
+	//speed = 'faster';
 
 	if (typeof speed === 'string') {
 		elem.classList.add('animated', animationName, speed);
@@ -803,7 +803,7 @@ function selectCardToSteal(card, targetPlayer, cardType, specialCard) {
 			}
 
 			socket.emit(emitMsg, { targetPlayer, cardName, cardType, specialCard, myCardName, myCardType});
-			closeAlert('playerAlert');
+			closeAlert('specialMsg');
 		};
 	}
 }
@@ -852,8 +852,8 @@ socket.on('useCardResp', response => {
 			</div>
 			`;
 			
-			closeAlert('playerAlert');
-			playerAlert(content);
+			closeAlert('zoomAlert');
+			playerAlert(content, 'specialMsg');
 			return;
 		}
 
@@ -890,7 +890,7 @@ socket.on('useCardResp', response => {
 			`;
 			
 			closeAlert('zoomAlert');
-			playerAlert(content);
+			playerAlert(content, 'specialMsg');
 			return;
 		}
 		if (response.action === 'swap') {

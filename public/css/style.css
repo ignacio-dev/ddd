@@ -495,11 +495,11 @@ ol, ul, li {
 	transform: rotate(10deg);
 }
 
-#SOUND_TOGGLER[data-sound="on"] .icon {
+#SOUND_TOGGLER .icon[data-sound="on"]{
 	background-image: url('../img/sound_on.png')
 }
 
-#SOUND_TOGGLER[data-sound="off"] .icon {
+#SOUND_TOGGLER .icon[data-sound="off"] {
 	background-image: url('../img/sound_off.png')
 }
 
