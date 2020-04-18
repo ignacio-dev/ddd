@@ -232,7 +232,7 @@ socket.on('loserMsg', loser => {
 	<div class="card back${pointer}" data-card-loser="1" ${func1}"></div>
 	<div class="card back${pointer}" data-card-loser="2" ${func2}"></div>
 	<div class="card back${pointer}" data-card-loser="3" ${func3}"></div>
-	<div class="card back${pointer}" data-card-loser="3" ${func4}"></div>
+	<div class="card back${pointer}" data-card-loser="4" ${func4}"></div>
 </div>
 	`);
 });
