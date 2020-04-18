@@ -15,7 +15,7 @@ const SETTINGS = {
 // LOCAL DATA HOLDERS
 var local_id;
 var firstMove = false;
-socket.on('init', () => firstMove = true);
+	socket.on('init', () => firstMove = true);
 
 // DOM ELEMENTS
 const APP = document.getElementById('APP');
@@ -81,7 +81,7 @@ socket.on('roomData', ({ players, cards, card, next, remove_rules, ruleRemove })
 });
 
 // PLAYER ID
-socket.once('playerId', ({playerId}) => {
+socket.once('playerId', ({ playerId }) => {
 	local_id = playerId;
 });
 
@@ -107,7 +107,9 @@ socket.on('startTimer', () => {
 });
 
 // CARD DRAWN
-socket.on('cardDrawn', card =>  drawCard(card));
+socket.on('cardDrawn', card =>  {
+	drawCard(card);
+});
 
 // DISCARD ACTION CARD
 socket.on('discardAction', ({ card }) => {
@@ -702,7 +704,7 @@ function stateCardAlert(card, id) {
 					socket.emit('animationOverReq');
 				}, 'faster');
 				});
-		}, 0/*5000*/);
+		}, 5000);
 	});
 }
 
