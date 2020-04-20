@@ -175,14 +175,24 @@ ol, ul, li {
 .av1 { background-image: url('../img/avatars/1.jpg'); }
 .av2 { background-image: url('../img/avatars/2.jpg'); }
 .av3 { background-image: url('../img/avatars/3.jpg'); }
+.av4 { background-image: url('../img/avatars/4.jpg'); }
+.av5 { background-image: url('../img/avatars/5.jpg'); }
+.av6 { background-image: url('../img/avatars/6.jpg'); }
+.av7 { background-image: url('../img/avatars/7.jpg'); }
+.av8 { background-image: url('../img/avatars/8.jpg'); }
+.av9 { background-image: url('../img/avatars/9.jpg'); }
+.av10 { background-image: url('../img/avatars/10.jpg'); }
 
 #PICK_AVATAR {
 	display: flex;
+	flex-wrap: wrap;
+	max-width: 350px;
 }
 
 #PICK_AVATAR .avatar {
 	border: 1px solid #000;
 	cursor: pointer;
+	margin-bottom: 15px;
 }
 
 #PICK_AVATAR .avatar.active {
@@ -826,6 +836,8 @@ ol, ul, li {
 /* CREDITS */
 #CREDITS {
 	display: flex;
+	-webkit-user-select: auto;
+			user-select: auto;
 }
 
 #CREDITS div:first-child {

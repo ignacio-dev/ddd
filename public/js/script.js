@@ -275,22 +275,30 @@ socket.on('showLoserCard', ({num, loser_card}) => {
 	<div class="mw">
 		<h1>That's all folks!</h1>
 		<p class="group">
-			Thanks for playing! If you enjoyed the game you will love our full card game
-			with 200 cards and extra mechanics available <a href="http://www.google.com" target="_blank" class="styled">here</a>!<br>
-			We also have some great merch :)
+			Thanks for playing! If you enjoyed the game you will love our original card game!
+			Made up of a whopping 200 cards and extra mechanics! perfect for when the bars open again!
+			<a class="styled" href="https://www.drinkdrankdrunkthegame.com/shop">GET YOURS NOW!</a>
 		</p>
 		<p class="group">
-			This game online game was free!<br>
-			Please support the creatorts by buying them a drink or 3.
+			We also have some pretty lit, snatched, on fleek & dope MERCH available
+			<a class="styled" href="https://www.drinkdrankdrunkthegame.com/shop">HERE.</a>
+			You may have noticed that this game was free! So please help support us creators by spreading the word,
+			buying our stuff or buying us a drink or 3! :)
 		</p>
 		<p class="group">
 			Original game by Felix Mulder <a href="" class="styled donate">(donate)</a><br>
 			Illustrations & art by Kimbo Gruff <a href="" class="styled donate">(donate)</a><br>
 			Online game development by Jury & Serena Paget <a href="" class="styled donate">(donate)</a>
 		</p>
+		<p class="group">
+			If you want to drop us a line with questions, card ideas or pictures of your cat 
+			you can reach us at 
+			<a class="styled" href="mailto:contact@drinkdrankdrunkthegame.com">contact@drinkdrankdrunkthegame.com</a> 
+			or just shout, really really loud.
+		</p>
 		<div>
 			<a class="button bg-blue shadow" href="index.html">Play again</a>
-			<a class="button bg-blue shadow" href="index.html">Shop</a>
+			<a class="button bg-blue shadow" href="https://www.drinkdrankdrunkthegame.com/shop">Shop</a>
 		</div>
 	</div>
 </div>
