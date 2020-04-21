@@ -142,7 +142,7 @@ socket.on('ruleReplaceMsg', ({ card }) => {
 	</p>
 </div>
 <div class="group" style="display: flex;">
-	<div class="card new-rule" style="background-image: url('../img/cards/Rule/${imgFile}'); margin-right: 50px;">
+	<div class="card new-rule" style="background-image:url('../img/cards/Rule/${imgFile}');margin-right:50px;">
 		<span>NEW</span>
 	</div>
 	<div class="card pointer" id="rule_pick1" onclick="selectRule(1,'${card.name}');" style="background-image:${rule1};"></div>
@@ -175,9 +175,11 @@ socket.on('specialCardUsed', ({ playerOrig, playerTarg, specialCard }) => {
 	}
 	console.log(playerOrig, playerTarg, specialCard);
 	playerAlert(`
-	<h1 class="group" style="text-align:center;">${msg}</h1>
-	<div class="card group" style="background-image:url('../img/cards/Special/${fileNameParse(specialCard)}-min.jpg'); margin:0 auto;"></div>
-	<button class="button bg-blue shadow" onclick="closeAlert('specialCardUsed')">Ok</button>
+<h1 class="group" style="text-align:center;">${msg}</h1>
+<div clas="group">
+	<div class="card" style="background-image:url('../img/cards/Special/${fileNameParse(specialCard)}-min.jpg');margin:0 auto;"></div>
+</div>
+<button class="button bg-blue shadow" onclick="closeAlert('specialCardUsed')">Ok</button>
 	`, 'specialCardUsed');
 });
 
@@ -187,7 +189,7 @@ socket.on('everyoneDrinks', () => {
 	animate(ROOT, 'shake');
 	playerAlert(`
 <div class="group">
-	<h1 class="animated shake" style="font-size: 60px;">EVERYONE DRINKS!!</h1>
+	<h1 class="animated shake" style="font-size:60px;">EVERYONE DRINKS!!</h1>
 </div>
 <button class="button bg-blue shadow" onclick="closeAlert('drinkAlert')">Continue</button>
 	`,
@@ -221,7 +223,7 @@ socket.on('loserMsg', loser => {
 	let pointer = loser.id === local_id ? ' pointer' : '';
 	playerAlert(`
 <div class="group" id="looser_text">
-	<h1 style="font-size: 2.5em">Time's up!!!</h1>
+	<h1 style="font-size:2.5em">Time's up!!!</h1>
 	<p>
 		<span style="font-size:1.6em;">${loser.nickname}</span> has had <span style="font-size:1.6em;">${loser.drinks} drinks</span> and is the loser
 		(all point and laugh, lol!)<br>
