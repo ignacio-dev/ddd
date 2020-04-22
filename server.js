@@ -35,24 +35,26 @@ const {
 	pickLoserCard
 } = require('./tools/cards');
 
+function sendHeartbeat() {
+	setTimeout(sendHeartbeat, 8000);
+	IO.sockets.emit('ping', { beat: 1 });
+}
 
 // APP & SERVER
 const APP    = express();
 const SERVER = http.createServer(APP);
 const PORT   = process.env.PORT || 3000;
-const IO     = socketio(SERVER);
+const IO     = socketio(SERVER, {
+	pingInterval: 10000
+});
 
 
 // STATIC FOLDER
-APP.use(express.static(path.join(
-	__dirname,
-	'public'
-)));
+APP.use(express.static(path.join(__dirname,'public'), { maxAge: 86400000 }));
 
 
 // SOCKETS
 IO.on('connection', socket => {
-
 	// JOIN ROOM
 	socket.on('joinRoom', ({ nickname, room, avatar }) => {
 		const room_players = getRoomPlayers(room);
@@ -87,6 +89,7 @@ IO.on('connection', socket => {
 
 		}
 	});
+	console.log(socket);
 
 	// IMG PRE CACHE
 	socket.on('imgPreCacheReq', () => {
@@ -295,7 +298,7 @@ IO.on('connection', socket => {
 			}
 			
 		}
-		//console.log(targetPlayer, cardName, cardType, specialCard);
+
 	});
 
 	socket.on('showSpecialReq', card => {
@@ -383,10 +386,11 @@ IO.on('connection', socket => {
 			});
 		}
 	});
-
-	
 });
 
-
 // SERVER LISTEN
-SERVER.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+SERVER.listen(PORT, () => {
+	if (PORT === 3000) {
+		console.log(`Listening on port ${PORT}`);
+	}	
+});

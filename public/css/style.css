@@ -836,12 +836,14 @@ ol, ul, li {
 /* CREDITS */
 #CREDITS {
 	display: flex;
+	align-items: center;
 	-webkit-user-select: auto;
 			user-select: auto;
+
 }
 
 #CREDITS div:first-child {
-	margin-right: 25px;
+	margin-right: 50px;
 }
 
 #CREDITS .button {
@@ -1098,7 +1100,7 @@ ol, ul, li {
 
 	#DESK .bottom {
 		position: absolute;
-		top: 275px;
+		top: 350px;
 	}
 
 	.bottom .instructions {

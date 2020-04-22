@@ -52,9 +52,11 @@ function getRoomPlayers(room) {
 	return PLAYERS.filter(player => player.room === room);
 }
 
+
 function getRoomModerator(room) {
 	return PLAYERS.filter(player => player.room === room && player.turn === true);
 }
+
 
 function nextPlayer(id) {
 	let currentPlayer = getCurrentPlayer(id);
@@ -96,10 +98,11 @@ function attachCard(room, id, card) {
 
 			case 'Special':
 				player.specialCards.push(card.name);
-				break;			
+				break;
 		}
 	}
 }
+
 
 function getRoomLoser(room) {
 	const room_players = getRoomPlayers(room);
@@ -116,15 +119,15 @@ function getRoomLoser(room) {
 	return loser;
 }
 
+
 function useCardMessage(player, card) {
-	// console.log(card);
 	const ROOM_PLAYERS = getRoomPlayers(player.room);
 	var playersWithPowers = ROOM_PLAYERS.filter(p => p.stateCards.power.length > 0);
 	var playersWithWeakness = ROOM_PLAYERS.filter(p => p.stateCards.weakness.length > 0);
 	var playersWithStateCards = ROOM_PLAYERS.filter(p => p.stateCards.weakness.length > 0 || p.stateCards.power.length > 0);
 	var response;
 	switch(card) {
-		case '1Up': // Steal a power			
+		case '1Up': // Steal a power
 			response = {
 				action: 'steal',
 				target_players: playersWithPowers,
@@ -149,7 +152,6 @@ function useCardMessage(player, card) {
 			break;
 
 		case 'Friend in Need': // Remove Weakness From Someone
-			
 			response = {
 				action: 'remove',
 				target_players: playersWithWeakness,
@@ -188,6 +190,7 @@ function useCardMessage(player, card) {
 				myself_cards: 'Weakness'
 			};
 			break;
+
 		case 'Anarchy': // Remove Everyone's State Cards
 			response =  {
 				action: 'anarchy',
@@ -201,13 +204,10 @@ function useCardMessage(player, card) {
 				action: 'expelliarmus',
 				target_players: playersWithStateCards,
 				target_cards: 'All',
-
-				//display_rule_cards: true,
+				card,
 
 				heading: 'Remove any of the following cards',
 				button: 'Remove!',
-
-				card
 			}
 			break;
 
@@ -215,7 +215,7 @@ function useCardMessage(player, card) {
 		case 'Nope':
 		case 'Counter':
 		case 'Karma Police':
-		case 'Down it!': "value", 
+		case 'Down it!': 
 			response = {
 				action: 'show',
 				card
@@ -226,8 +226,8 @@ function useCardMessage(player, card) {
 	return response;
 }
 
+
 function stealCard(playerOrig, playerTarg, cardName, cardType, specialCard) {
-	console.log(specialCard);
 	let playerOrigIdx = PLAYERS.findIndex(p => p.id === playerOrig.id);
 	let playerTargIdx = PLAYERS.findIndex(p => p.id === playerTarg.id);
 	
@@ -239,6 +239,7 @@ function stealCard(playerOrig, playerTarg, cardName, cardType, specialCard) {
 	PLAYERS[playerOrigIdx].specialCards.splice(specialCardIdx, 1);
 }
 
+
 function removeCard(playerOrig, playerTarg, cardName, cardType, specialCard) {
 	let playerOrigIdx = PLAYERS.findIndex(p => p.id === playerOrig.id);
 	let playerTargIdx = PLAYERS.findIndex(p => p.id === playerTarg.id);
@@ -249,6 +250,7 @@ function removeCard(playerOrig, playerTarg, cardName, cardType, specialCard) {
 	let specialCardIdx = PLAYERS[playerOrigIdx].specialCards.findIndex(c => c === specialCard);
 	PLAYERS[playerOrigIdx].specialCards.splice(specialCardIdx, 1);
 }
+
 
 function swapCard(playerOrig, playerTarg, cardName, cardType, specialCard, myCardName, myCardType) {
 	let playerOrigIdx = PLAYERS.findIndex(p => p.id === playerOrig.id);
@@ -266,6 +268,7 @@ function swapCard(playerOrig, playerTarg, cardName, cardType, specialCard, myCar
 	PLAYERS[playerOrigIdx].specialCards.splice(specialCardIdx, 1);
 }
 
+
 function resetRoomStateCards(room, specialCard, playerOrig) {
 	for (let p of PLAYERS) {
 		if (p.room === room) {
@@ -279,8 +282,8 @@ function resetRoomStateCards(room, specialCard, playerOrig) {
 
 }
 
+
 function removeRule(player, specialCard) {
-	console.log(player, specialCard);
 	let playerIdx  = PLAYERS.findIndex(p => p.id === player.id);
 	let specialIdx = PLAYERS[playerIdx].specialCards.findIndex(c => c === specialCard);
 	PLAYERS[playerIdx].specialCards.splice(specialIdx, 1);

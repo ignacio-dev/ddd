@@ -32,6 +32,7 @@ function shuffle(card_stack) {
 
 function getPreCacheData() {
 	const cards_data = JSON.parse(JSON_FILE);
+	const forfeit_data = JSON.parse(fs.readFileSync('./json/forfeit.json', 'utf8'));
 	const precacher = [];
 	for (let card of cards_data) {
 		precacher.push({name: card.name, type: card.type});

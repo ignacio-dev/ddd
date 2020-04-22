@@ -171,12 +171,18 @@ socket.on('specialCardUsed', ({ playerOrig, playerTarg, specialCard }) => {
 		msg = `${playerOrig.nickname} used a special card!`;
 	}
 	else {
-		msg =`${playerOrig.nickname} used a special card on ${playerTarg.nickname}!`;
+		if (playerOrig.id === playerTarg.id) {
+			msg = `${playerOrig.nickname} used a special card!`;
+		}
+		else {
+			msg =`${playerOrig.nickname} used a special card on ${playerTarg.nickname}!`;
+		}	
 	}
-	console.log(playerOrig, playerTarg, specialCard);
+
+	playSound('special');
 	playerAlert(`
 <h1 class="group" style="text-align:center;">${msg}</h1>
-<div clas="group">
+<div class="group">
 	<div class="card" style="background-image:url('../img/cards/Special/${fileNameParse(specialCard)}-min.jpg');margin:0 auto;"></div>
 </div>
 <button class="button bg-blue shadow" onclick="closeAlert('specialCardUsed')">Ok</button>
@@ -213,8 +219,11 @@ socket.on('loserMsg', loser => {
 	for (let m of modals) {
 		m.parentNode.removeChild(m);
 	}
+
+	// EVERYTHING SHAKES
 	animate(document.querySelector('body'), 'shake');
 
+	// LOSER ALERT
 	let func1 = loser.id === local_id ? 'onclick="selectLoserCard(1)"' : '';
 	let func2 = loser.id === local_id ? 'onclick="selectLoserCard(2)"' : '';
 	let func3 = loser.id === local_id ? 'onclick="selectLoserCard(3)"' : '';
@@ -239,6 +248,16 @@ socket.on('loserMsg', loser => {
 	<div class="card back${pointer}" data-card-loser="4" ${func4}"></div>
 </div>
 	`);
+
+	// PRE CACHE FORFEITS
+	let forf1 = new Image();
+		forf1.src = '../img/cards/forfeit/debauchee.jpg';
+	let forf2 = new Image();
+		forf2.src = '../img/cards/forfeit/dranky.jpg';
+	let forf3 = new Image();
+		forf3.src = '../img/cards/forfeit/drinky.jpg';
+	let forf4 = new Image();
+		forf4.src = '../img/cards/forfeit/drunky.jpg';
 });
 
 socket.on('showLoserCard', ({num, loser_card}) => {
@@ -307,6 +326,7 @@ socket.on('showLoserCard', ({num, loser_card}) => {
 	`);
 	}, 10000);
 });
+
 
 /*
 
@@ -846,7 +866,8 @@ socket.on('useCardResp', response => {
 				content += `<div class="cardsToSteal">`;
 
 				for (let tCard of p.stateCards[response.target_cards.toLowerCase()]) {
-					cards += `<div class="card pointer enemy"
+					cards += `
+					<div class="card pointer enemy"
 					style="background-image: url('../img/cards/${response.target_cards}/${fileNameParse(tCard)}-min.jpg');"
 					onclick="selectCardToSteal(this, '${p.id}', '${response.target_cards.toLowerCase()}', '${tCard}');"
 					data-card-name="${tCard}"
@@ -874,22 +895,21 @@ socket.on('useCardResp', response => {
 		if (response.action === 'remove') {
 			var ruleCardsAdded = false;
 			for (let p of response.target_players) {
-				content += '<div class="playerToSteal">';
-				content += `<p>${p.nickname}</p>`;
-				content += `<div class="cardsToSteal">`;
-				
+				content += `
+				<div class="playerToSteal">
+					<p>${p.nickname}</p>
+					<div class="cardsToSteal">`;
 				
 				let cards = '';
 				for (let tCard of p.stateCards[response.target_cards.toLowerCase()]) {
-				cards += `
-				<div class="card pointer enemy"
-				style="background-image: url('../img/cards/${response.target_cards}/${fileNameParse(tCard)}-min.jpg');"
-				onclick="selectCardToSteal(this, '${p.id}', '${response.target_cards.toLowerCase()}', '${response.card}');"
-				data-card-name="${tCard}"
-				data-card-type="${response.target_cards}"
-				></div>`;
+					cards += `
+					<div class="card pointer enemy"
+					style="background-image: url('../img/cards/${response.target_cards}/${fileNameParse(tCard)}-min.jpg');"
+					onclick="selectCardToSteal(this, '${p.id}', '${response.target_cards.toLowerCase()}', '${response.card}');"
+					data-card-name="${tCard}"
+					data-card-type="${response.target_cards}"
+					></div>`;
 				}
-				// }
 				
 				content += cards;
 				content += '</div>';
@@ -929,11 +949,12 @@ socket.on('useCardResp', response => {
 			</div>
 			`;
 			for (let p of response.target_players) {
-				content += '<div class="playerToSteal">';
-				let cards = '';
-				content += `<p>${p.nickname}</p>`;
-				content += `<div class="cardsToSteal">`;
-				
+				content += `
+				<div class="playerToSteal">
+					<p>${p.nickname}</p>
+					<div class="cardsToSteal">`;
+
+				let cards = '';				
 				for (let tCard of p.stateCards[response.target_cards.toLowerCase()]) {
 					cards += `<div class="card pointer enemy"
 					style="background-image: url('../img/cards/${response.target_cards}/${fileNameParse(tCard)}-min.jpg');"
@@ -972,10 +993,10 @@ socket.on('useCardResp', response => {
 			if (ruleCards.length !== 0) {
 				content += `
 				<div class="playerToSteal">
-				<p>Rules:</p>
+					<p>Rules:</p>
+					<div class="cardsToSteal">
 				`;
-				
-				content += '<div class="cardsToSteal">'
+
 				for (let ruleC of ruleCards) {
 					content += `
 					<div
@@ -995,8 +1016,8 @@ socket.on('useCardResp', response => {
 				let nick = p.id === local_id ? p.nickname + '(you)' : p.nickname
 				content += `
 				<div class="playerToSteal">
-				<p>${nick}:</p>
-				<div class="cardsToSteal">
+					<p>${nick}:</p>
+					<div class="cardsToSteal">
 					
 				`;
 				for (let powerCard of p.stateCards.power) {
