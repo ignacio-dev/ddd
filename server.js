@@ -43,7 +43,7 @@ function sendHeartbeat() {
 // APP & SERVER
 const APP    = express();
 const SERVER = http.createServer(APP);
-const PORT   = process.env.PORT || 3000;
+const PORT   = 3000;
 const IO     = socketio(SERVER, {
 	pingInterval: 10000
 });
@@ -89,7 +89,6 @@ IO.on('connection', socket => {
 
 		}
 	});
-	console.log(socket);
 
 	// IMG PRE CACHE
 	socket.on('imgPreCacheReq', () => {
